@@ -2,6 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const passport = require("passport");
 
 //imports
 const users = require("./routes/api/users");
@@ -25,7 +26,9 @@ mongoose
   .catch(err => {
     console.log("errors you stupid bitch" + err);
   });
-app.get("/", (req, res) => res.send("really, fuck off, mate"));
+
+app.use(passport.initialize());
+require("./config/passport")(passport);
 
 app.use("/api/content", content);
 app.use("/api/courses", courses);
