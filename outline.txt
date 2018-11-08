@@ -1,0 +1,38 @@
+USER_________
+__________________________
+	Orders
+	Viewing History
+	Questions/Social
+
+ADMIN_________
+__________________________
+	Pending Orders
+	Lists
+	Articles
+	Links
+	Features
+	Courses
+
+SITE_________
+__________________________
+	Articles&Videos
+	Order Form
+	Sign Up/Log In
+	Links
+	Courses
+
+
+
+
+
+
+API
+_______________________
+
+Users - log in information, orders, userid, account creation
+
+Articles - upload/download, sorty by date
+
+Courses - upload, user course stats
+
+Sales - addToList, purchase calendar/queen
