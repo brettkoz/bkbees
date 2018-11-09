@@ -1,0 +1,44 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  /* text-align: center;
+  background: url("./assets/bg.svg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0; */
+}
+
+.logo {
+  background: url("./assets/beeVector.svg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  float: left;
+  width: 50px;
+  min-height: 50px;
+
+  /* animation: App-logo-spin infinite 20s linear; */
+}
+.contentContainer {
+  background: url("./assets/banner.jpg") no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 60vh;
+  width: 100%;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
