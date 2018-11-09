@@ -8,19 +8,18 @@ body {
 
 .App {
   text-align: center;
-  background: url("./assets/bg.svg") no-repeat;
+  background: url("./assets/bg.jpg") no-repeat center center fixed;
   background-size: cover;
-  background-position: center;
+
   min-height: 100vh;
   margin: 0;
   padding: 0;
-
 }
 
 .logo {
   background: url("./assets/beeVector.svg") no-repeat;
   background-size: contain;
-  background-position:left;
+  background-position: left;
   position: relative;
   float: left;
   width: 65px;
@@ -29,33 +28,43 @@ body {
   /* animation: App-logo-spin infinite 20s linear; */
 }
 .contentContainer {
-  text-align:center;
-  height:100%;
-  
+  text-align: center;
+  height: 100%;
 }
-.buttons{
-  height:150px;
-  margin-top:40vh;
+.buttons {
+  height: 150px;
+  margin-top: 32vh;
 }
-
+.buttons h1 {
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+  font-size: 500%;
+  text-shadow: 4px 4px 8px #000000;
+  letter-spacing: 10px;
+  margin: 0;
+}
+.tagline {
+  color: #fff;
+  font-size: 120%;
+  margin-bottom: 1em;
+}
+.buttons button {
+  margin: 0 5px;
+}
 .logoText {
-  padding-top:.45em;
-  font-size:160%;
+  padding-top: 0.45em;
+  font-size: 960%;
 }
 .navbar {
-  height:60px;
-  border-bottom:2px solid #000;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1a2d33+0,2b4d54+50,1a2d33+100 */
-background: #1a2d33; /* Old browsers */
-background: -moz-linear-gradient(top, #1a2d33 0%, #2b4d54 50%, #1a2d33 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top, #1a2d33 0%,#2b4d54 50%,#1a2d33 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom, #1a2d33 0%,#2b4d54 50%,#1a2d33 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a2d33', endColorstr='#1a2d33',GradientType=0 ); /* IE6-9 */
-  
+  height: 60px;
+  /* background: #fff; */
 }
-@media only screen and (max-width:780px){
-  .navbar{
-    height:auto;
-    min-height:60px;
+.navbar a {
+  color: #000;
+}
+@media only screen and (max-width: 780px) {
+  .navbar {
+    height: auto;
+    min-height: 60px;
   }
 }

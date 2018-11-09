@@ -8,17 +8,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Navbar></Navbar>
+        <Navbar />
         <div className="contentContainer">
-            
-
-            <div className="buttons">
+          <div className="buttons">
             <h1>B&K BEES</h1>
-            <button className="btn btn-outline-primary">Order Bees</button>
-            <button className="btn btn-outline-primary">Watch Videos</button>
-            <button className="btn btn-outline-primary">Other Shit</button>
-            </div>
-          
+            <p className="tagline">Have Some Fun With Your Bees</p>
+            <button className="btn btn-lg btn-dark">Order Bees</button>
+            <button className="btn btn-lg btn-dark">Watch Videos</button>
+            <button className="btn btn-lg btn-dark">Log In</button>
+          </div>
         </div>
       </div>
     );
