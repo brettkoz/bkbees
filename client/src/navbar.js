@@ -1,16 +1,16 @@
 import React from "react";
 function Navbar(props) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light static-top">
+    <nav className="navbar navbar-expand-lg static-top">
       <div className="container">
         <a className="navbar-brand" href="http://www.google.com">
-          <div className="logo" />
+          <div className="logo" /> 
         </a>
         <button
           className="navbar-toggler"
           type="button"
           data-toggle="collapse"
-          data-target="http://www.google.comnavbarResponsive"
+          data-target="#navbarResponsive"
           aria-controls="navbarResponsive"
           aria-expanded="false"
           aria-label="Toggle navigation"
