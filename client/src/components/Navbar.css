@@ -1,0 +1,39 @@
+
+.logo {
+    background: url("./../assets/beeVector.svg") no-repeat;
+    background-size: contain;
+    background-position: left;
+    position: relative;
+    float: left;
+    width: 65px;
+    min-height: 65px;
+  
+    /* animation: App-logo-spin infinite 20s linear; */
+  }
+  
+  .logoText {
+    padding-top: 0.43em;
+    font-size:160%;
+    letter-spacing: 2px;
+    /* font-size: 960%; */
+  }
+  .navbar {
+    height: 60px;
+    /* background: #fff; */
+  }
+  .navbar a {
+    color: #000;
+  }
+  .navbar-toggler-icon{
+      color:#000;
+  }
+
+  @media only screen and (max-width: 780px) {
+    .navbar {
+      height: auto;
+      min-height: 60px;
+    }
+    .navbar-nav {
+        background:#fff;
+    }
+  }

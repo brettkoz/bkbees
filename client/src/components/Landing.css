@@ -1,0 +1,47 @@
+.contentContainer {
+    text-align: center;
+    height: 100%;
+  }
+  .buttons {
+    height: 150px;
+    margin-top: 32vh;
+    text-align: center;
+  }
+  .buttons h1 {
+    color: #fff;
+    font-family: "Raleway", sans-serif;
+    font-weight:900;
+    font-size: 500%;
+    text-shadow: 4px 4px 8px #000000;
+    letter-spacing: 10px;
+    margin: 0;
+  }
+  .tagline {
+    color: #fff;
+    font-size: 190%;
+    margin-bottom: 1em;
+    font-family: "Dosis", sans-serif;
+    font-weight:700;
+    letter-spacing: 4px;
+    text-shadow:2px 2px 3px #000;
+  }
+  
+  .buttons button {
+    margin: 0 5px;
+  }
+
+  @media only screen and (max-width: 800px) {
+      .buttons h1 {
+          font-size:300%;
+          letter-spacing:7px;
+      }
+      .tagline {
+          font-size:140%;
+          letter-spacing:1px;
+      }
+      .buttons {
+        height: 150px;
+        margin-top: 30vh;
+        text-align: center;
+      }
+  }
