@@ -21,11 +21,20 @@ class Register extends Component {
   }
   onSubmit(event) {
     event.preventDefault();
+    let user = {
+      name:this.state.name,
+      email:this.state.email,
+      password:this.state.password,
+      password2:this.state.password2,
+      errors:this.state.errors
+    }
+    console.log(user);
   }
 
   render() {
     return (
-      <div className="card formCard col-md-8 m-auto">
+      <div className="container container-fluid appContainer">
+      <div className="formCard col-md-8 m-auto">
         <h1>Register</h1>
         <p className="lead">Create Your B&K Bees Account</p>
 
@@ -82,8 +91,9 @@ class Register extends Component {
               />
             </div>
           </div>
-          <input type="submit" className="btn btn-info btn-block" />
+          <input type="submit" className="btn btn-info btn-block submit" />
         </form>
+      </div>
       </div>
     );
   }

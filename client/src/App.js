@@ -8,6 +8,7 @@ import Navbar from "./components/navbar";
 import Landing from './components/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import Footer from './components/Footer';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class App extends Component {
@@ -21,7 +22,9 @@ class App extends Component {
         <Route exact path="/login" component={Login}/>
         <Route exact path="/register" component={Register}/>
         </div>
+        <Footer/>
       </div>
+      
       </Router>
     );
   }

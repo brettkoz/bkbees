@@ -1,0 +1,24 @@
+.footer {
+    position: relative;
+    width:100%;
+    height:40px;
+    
+    bottom:0;
+    
+    border-top:1px solid #ccc;
+    
+}
+footer p,a,span {
+    color:#777;
+    
+}
+footer p {
+    font-size:50%;
+}
+.social {
+    font-size:150%;
+    margin:13px 5px 10px 5px;
+}
+.credit {
+    font-size:70%;
+}

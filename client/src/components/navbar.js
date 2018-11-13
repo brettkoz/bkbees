@@ -6,7 +6,7 @@ function Navbar(props) {
       <div className="container">
         <Link className="navbar-brand" to="/">
           <div className="logo" />
-          <h1 className="logoText">B&K BEES</h1>
+          <h1 className="logoText"><b>B&K</b> BEES</h1>
         </Link>
         <button
           className="navbar-toggler"
