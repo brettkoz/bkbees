@@ -13,6 +13,7 @@ const validateLoginInput = require("../../validators/login");
 
 //Register User
 router.post("/register", (req, res) => {
+  console.log("got to register at api");
   //input validation
   const { errors, isValid } = validateRegisterInput(req.body);
   if (!isValid) {

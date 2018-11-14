@@ -29,7 +29,7 @@ const validateRegisterInput = data => {
   if (Validator.isEmpty(data.password2)) {
     errors.password = "Confirm Password Field Is Required";
   }
-  if (!data.password === data.password2) {
+  if (data.password != data.password2) {
     errors.password = "Passwords Must Match";
   }
   return {
