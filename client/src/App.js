@@ -14,7 +14,7 @@ import Landing from "./components/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Footer from "./components/Footer";
-import { setCurrentUser } from "./actions/authAction";
+import { setCurrentUser, logoutUser } from "./actions/authAction";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -32,9 +32,8 @@ if (localStorage.jwtToken) {
   const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {
     // Logout user
-
+    store.dispatch(logoutUser());
     // TODO: Clear current Profile
-
     // Redirect to login
     window.location.href = "/login";
   }

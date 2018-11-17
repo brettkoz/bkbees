@@ -26,10 +26,15 @@ router.post("/register", (req, res) => {
       return res.status(400).json(errors);
       console.log("Email Already Exists Error Registering User");
     } else {
+      const isAdmin =
+        req.body.email == "kozbrett@gmail.com" || "kreplogle88@icloud.com"
+          ? true
+          : false;
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        admin: isAdmin
       });
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -70,7 +75,12 @@ router.post("/login", (req, res) => {
       }
       bcrypt.compare(password, user.password).then(isMatch => {
         if (isMatch) {
-          const payload = { id: user.id, name: user.name, email: user.email };
+          const payload = {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            admin: user.admin
+          };
           jwt.sign(
             payload,
             config.secret,
