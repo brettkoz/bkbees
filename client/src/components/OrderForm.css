@@ -1,0 +1,28 @@
+.order-container{
+    position: relative;
+    width:40%;
+    margin:0 auto;
+}
+.form-check{
+    margin-left:40px;
+    margin-top:1em;
+    margin-bottom:1em;
+}
+
+.categories {
+    display:flex;
+}
+.category{
+    width:30%;
+    cursor:pointer;
+}
+
+@media only screen and (max-width:800px){
+    .order-container{
+        width:100%;
+        margin-bottom:1em;
+    }
+    .categories {
+        display:block;
+    }
+}

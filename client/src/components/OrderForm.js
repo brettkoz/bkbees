@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import classnames from 'classnames';
 import PropTypes from "prop-types";
-import { placeOrder } from "../../actions/orderActions";
+import { placeOrder } from "./../actions/orderActions";
 import { connect } from "react-redux";
 
-class Orderform extends Component {
+class OrderForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -17,9 +18,18 @@ class Orderform extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
+  onChange(){
+
+  }
+  onSubmit(){
+
+  }
   render() {
+    const errors = this.state.errors;
     return (
-      <div className="container">
+      <div className="order-container">
+      <h3>Order Queens</h3>
         <form noValidate onSubmit={this.onSubmit}>
           <div className="row">
             <div className="form-group">
@@ -66,44 +76,53 @@ class Orderform extends Component {
           <div className="row">
             <div className="form-group">
               <input
-                type="password"
+                type="phone"
                 className={classnames(
                   "form-control form-control-lg authInput",
                   {
-                    "is-invalid": errors.password
+                    "is-invalid": errors.phone
                   }
                 )}
-                placeholder="Password"
-                name="password"
-                value={this.state.password}
+                placeholder="Phone"
+                name="phone"
+                value={this.state.phone}
                 onChange={this.onChange}
                 required
               />
               {errors.password && (
-                <div className="invalid-feedback">{errors.password}</div>
+                <div className="invalid-feedback">{errors.phone}</div>
               )}
             </div>
           </div>
           <div className="row">
             <div className="form-group">
               <input
-                type="password"
+                type="number"
                 className={classnames(
                   "form-control form-control-lg authInput",
                   {
-                    "is-invalid": errors.password2
+                    "is-invalid": errors.quantity
                   }
                 )}
-                placeholder="Confirm Password"
-                name="password2"
-                value={this.state.password2}
+                placeholder="1"
+                name="quantity"
+                value={this.state.quantity}
                 onChange={this.onChange}
                 required
               />
               {errors.password2 && (
-                <div className="invalid-feedback">{errors.password2}</div>
+                <div className="invalid-feedback">{errors.quantity}</div>
               )}
             </div>
+            <div className="form-check form-check-inline">
+  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="unmarked" value="unmarked"/>
+  <label className="form-check-label" for="unmarked">Un-Marked</label>
+</div>
+<div className="form-check form-check-inline">
+  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="marked" value="marked"/>
+  <label className="form-check-label" for="inlineRadio2">Marked (add $5)</label>
+</div>
+            
           </div>
           <input type="submit" className="btn btn-info btn-block submit" />
         </form>
@@ -120,7 +139,8 @@ OrderForm.propTypes = {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  order: state.order
+  order: state.order,
+  errors: state.errors
 });
 
 export default connect(

@@ -4,6 +4,8 @@ import "./App.css";
 import "./typography.css";
 import "./components/Landing.css";
 import "./components/Navbar.css";
+import "./components/OrderForm.css";
+import "./components/auth/auth.css";
 
 import { Provider } from "react-redux";
 import Redux from "redux";
@@ -14,6 +16,10 @@ import Landing from "./components/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Footer from "./components/Footer";
+import Bees from './components/Bees';
+import Queens from './components/bees/Queens';
+import Nucs from './components/bees/Nucs';
+import Packages from './components/bees/Packages';
 import { setCurrentUser, logoutUser } from "./actions/authAction";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -50,6 +56,10 @@ class App extends Component {
             <div className="container">
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
+              <Route exact path="/bees" component={Bees} />
+              <Route exact path="/bees/queens" component={Queens}/>
+              <Route exact path="/bees/nucs" component={Nucs}/>
+              <Route exact path="/bees/packages" component={Packages}/>
             </div>
             <Footer />
           </div>
