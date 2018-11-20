@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import classnames from 'classnames';
+import classnames from "classnames";
 import PropTypes from "prop-types";
 import { placeOrder } from "./../actions/orderActions";
 import { connect } from "react-redux";
@@ -19,17 +19,13 @@ class OrderForm extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onChange(){
-
-  }
-  onSubmit(){
-
-  }
+  onChange() {}
+  onSubmit() {}
   render() {
     const errors = this.state.errors;
     return (
       <div className="order-container">
-      <h3>Order Queens</h3>
+        <h3>Order Queens</h3>
         <form noValidate onSubmit={this.onSubmit}>
           <div className="row">
             <div className="form-group">
@@ -115,14 +111,29 @@ class OrderForm extends Component {
               )}
             </div>
             <div className="form-check form-check-inline">
-  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="unmarked" value="unmarked"/>
-  <label className="form-check-label" for="unmarked">Un-Marked</label>
-</div>
-<div className="form-check form-check-inline">
-  <input className="form-check-input" type="radio" name="inlineRadioOptions" id="marked" value="marked"/>
-  <label className="form-check-label" for="inlineRadio2">Marked (add $5)</label>
-</div>
-            
+              <input
+                className="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="unmarked"
+                value="unmarked"
+              />
+              <label className="form-check-label" for="unmarked">
+                Un-Marked
+              </label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="marked"
+                value="marked"
+              />
+              <label className="form-check-label" for="inlineRadio2">
+                Marked (add $5)
+              </label>
+            </div>
           </div>
           <input type="submit" className="btn btn-info btn-block submit" />
         </form>

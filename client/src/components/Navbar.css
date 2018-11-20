@@ -1,42 +1,42 @@
-
 .logo {
-    background: url("./../assets/beeVector.svg") no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    float: left;
-    width: 45px;
-    min-height: 45px;
-    margin-top:.3em;
-    /* animation: App-logo-spin infinite 20s linear; */
-  }
-  
-  .logoText {
-    padding-top: 0.32em;
-    font-size:150%;
-    margin-left:1.7em;
-    font-weight:normal;
-  }
-  .logoText b {
-    
-  }
-  .navbar {
-    height: 60px;
-    
-  }
-  .navbar a {
-    color: #000;
-  }
-  .navbar-toggler-icon{
-      color:#000;
-  }
+  background: url("./../assets/beeVector.svg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  float: left;
+  width: 45px;
+  min-height: 45px;
+  margin-top: 0.3em;
+  /* animation: App-logo-spin infinite 20s linear; */
+}
 
-  @media only screen and (max-width: 780px) {
-    .navbar {
-      height: auto;
-      min-height: 50px;
-    }
-    .navbar-nav {
-        background:#fff;
-    }
+.logoText {
+  padding-top: 0.32em;
+  font-size: 150%;
+  margin-left: 1.7em;
+  font-weight: normal;
+}
+.logoText b {
+}
+.navbar {
+  height: 60px;
+}
+.navbar a {
+  color: #000;
+}
+.navbar-toggler-icon {
+  color: #000;
+}
+
+@media only screen and (max-width: 780px) {
+  .navbar {
+    height: auto;
+    min-height: 50px;
   }
+  .navbar-nav {
+    background: #fff;
+  }
+  .container {
+    margin-top: 0 !important;
+  }
+}

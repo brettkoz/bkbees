@@ -1,6 +1,10 @@
 h1 {
   font-family: "Dosis", sans-serif;
-  font-weight:bold;
+  font-weight: bold;
+}
+h3 {
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
 }
 .logoText {
   font-family: "Raleway", sans-serif;
