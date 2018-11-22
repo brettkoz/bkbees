@@ -1,4 +1,5 @@
 import React from 'react';
+import MailingList from './MailingList';
 import './footer.css';
 
 function Footer(props){

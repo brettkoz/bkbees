@@ -15,8 +15,12 @@ import Navbar from "./components/navbar";
 import Landing from "./components/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import Learn from './components/Learn';
 import Footer from "./components/Footer";
 import Bees from './components/Bees';
+import Articles from './components/learn/Articles';
+import Videos from './components/learn/Videos';
+import Calendar from './components/learn/Calendar';
 import Queens from './components/bees/Queens';
 import Nucs from './components/bees/Nucs';
 import Packages from './components/bees/Packages';
@@ -56,10 +60,16 @@ class App extends Component {
             <div className="container">
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
+              <Route exact path="/learn" component={Learn}/>
               <Route exact path="/bees" component={Bees} />
+
               <Route exact path="/bees/queens" component={Queens}/>
               <Route exact path="/bees/nucs" component={Nucs}/>
               <Route exact path="/bees/packages" component={Packages}/>
+
+              <Route exact path="/learn/articles" component={Articles}/>
+              <Route exact path="/learn/videos" component={Videos}/>
+              <Route exact path="/learn/calendar" component={Calendar}/>
             </div>
             <Footer />
           </div>
