@@ -84,8 +84,16 @@ class Navbar extends Component {
     );
     return (
       <nav className="navbar navbar-expand-lg navbar-light static-top">
-        <div className="container">
-          <Link className="navbar-brand" to="/">
+        <div className="container navContainer">
+          <Link
+            className="navbar-brand"
+            to="/"
+            onClick={() => {
+              this.toggleNav("button");
+              console.log("clicked");
+              this.props.changeBg("landing");
+            }}
+          >
             <div className="logo" />
             <h1 className="logoText">
               <b>B&K</b> BEES
@@ -118,6 +126,7 @@ class Navbar extends Component {
                   onClick={() => {
                     this.toggleNav("button");
                     console.log("clicked");
+                    this.props.changeBg("pages");
                   }}
                   to="/bees"
                 >
@@ -130,6 +139,7 @@ class Navbar extends Component {
                   onClick={() => {
                     this.toggleNav("button");
                     console.log("clicked");
+                    this.props.changeBg("pages");
                   }}
                   to="/learn"
                 >
@@ -142,6 +152,7 @@ class Navbar extends Component {
                   onClick={() => {
                     this.toggleNav("button");
                     console.log("clicked");
+                    this.props.changeBg("pages");
                   }}
                   to="/about"
                 >
@@ -154,6 +165,7 @@ class Navbar extends Component {
                   onClick={() => {
                     this.toggleNav("button");
                     console.log("clicked");
+                    this.props.changeBg("pages");
                   }}
                   to="/contact"
                 >

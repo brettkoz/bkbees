@@ -9,6 +9,10 @@
   margin-top: 0.3em;
   /* animation: App-logo-spin infinite 20s linear; */
 }
+.navContainer {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
 
 .logoText {
   padding-top: 0.32em;
@@ -31,12 +35,11 @@
 @media only screen and (max-width: 780px) {
   .navbar {
     height: auto;
-    min-height: 50px;
-  }
-  .navbar-nav {
     background: #fff;
   }
+
   .container {
     margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 }
