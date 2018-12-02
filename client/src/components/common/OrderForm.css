@@ -1,0 +1,26 @@
+.order-container {
+  position: relative;
+  width: 40%;
+  margin: auto auto;
+  padding-bottom:2em;
+}
+.hidden{
+  visibility: hidden;
+}
+.form-check {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+@media only screen and (max-width: 800px) {
+  .order-container {
+    width: 100%;
+    margin-bottom: 1em;
+  }
+
+  .lead {
+    font-size: 120%;
+  }
+}

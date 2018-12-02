@@ -4,11 +4,11 @@ import "./App.css";
 import "./typography.css";
 import "./components/Landing.css";
 import "./components/Navbar.css";
-import "./components/OrderForm.css";
+import "./components/common/OrderForm.css";
 import "./components/auth/auth.css";
+import "./animate.css";
 
 import { Provider } from "react-redux";
-import Redux from "redux";
 import store from "./store";
 
 import Navbar from "./components/navbar";
@@ -17,13 +17,8 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Learn from "./components/Learn";
 import Footer from "./components/Footer";
-import Bees from "./components/Bees";
-import Articles from "./components/learn/Articles";
-import Videos from "./components/learn/Videos";
-import Calendar from "./components/learn/Calendar";
-import Queens from "./components/bees/Queens";
-import Nucs from "./components/bees/Nucs";
-import Packages from "./components/bees/Packages";
+import Bees from "./components/bees/Bees";
+import ThankYou from './components/common/ThankYou'
 import { setCurrentUser, logoutUser } from "./actions/authAction";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -60,6 +55,7 @@ class App extends Component {
       bg: ""
     };
   }
+  
   changeBg = page => {
     console.log("current state page is:" + this.state.bg);
     switch (page) {
@@ -115,22 +111,15 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div className="App" style={this.appDivStyle}>
+          <div className="App d-flex flex-column animated fadeIn" style={this.appDivStyle}>
             <Navbar changeBg={this.changeBg} />
             <Route exact path="/" component={Landing} />
-            <div className="container">
+            <div className="main container-fluid">
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/learn" component={Learn} />
-              <Route exact path="/bees" component={Bees} />
-
-              <Route exact path="/bees/queens" component={Queens} />
-              <Route exact path="/bees/nucs" component={Nucs} />
-              <Route exact path="/bees/packages" component={Packages} />
-
-              <Route exact path="/learn/articles" component={Articles} />
-              <Route exact path="/learn/videos" component={Videos} />
-              <Route exact path="/learn/calendar" component={Calendar} />
+              <Route path="/bees" component={Bees} />
+              <Route exact path="/thankyou" component={ThankYou}/>
             </div>
             <Footer />
           </div>

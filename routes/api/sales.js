@@ -15,11 +15,10 @@ router.get("/this", (req, res) => {
 
 router.post(
   "/order",
-  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { errors, isValid } = validateOrderInput(req.body);
     if (!isValid) {
-      console.log("errors with input validation for register " + errors);
+      console.log('error');
       return res.status(400).json(errors);
     }
     let currentOrder = new Order({
@@ -27,31 +26,18 @@ router.post(
       type: req.body.type,
       quantity: req.body.quantity,
       email: req.body.email,
+      name:req.body.name,
       phone: req.body.phone,
+      marked:req.body.marked,
       pending: true
     });
-    Order.findOne({ email: req.body.email, type: req.body.type, pending: true })
-      .then(order => {
-        if (order) {
-          console.log("found order with that email and order type");
-          //FOUND ORDER WITH THAT EMAIL & TYPE - UPDATE ORDER
-          return res
-            .status(404)
-            .json({ msg: "Order Already Exists" })
-            .send();
-        }
-        currentOrder
-          .save()
+    currentOrder.save()
           .then(order => {
             res.status(200).json(order);
           })
           .catch(err => {
             res.status(400).json(err);
-          });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+          }); 
   }
 );
 
