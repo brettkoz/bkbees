@@ -18,11 +18,15 @@ import Login from "./components/auth/Login";
 import Learn from "./components/Learn";
 import Footer from "./components/Footer";
 import Bees from "./components/bees/Bees";
-import ThankYou from './components/common/ThankYou'
+import ThankYou from "./components/common/ThankYou";
+import PrivateRoute from "./components/common/PrivateRoute";
+import AdminRoute from "./components/common/AdminRoute";
+import Dashboard from "./components/dashboard/Dashboard";
+import AdminDashboard from "./components/dashboard/AdminDashboard";
 import { setCurrentUser, logoutUser } from "./actions/authAction";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LandingBG from "./assets/bg.jpg";
 import PagesBg from "./assets/bgSVG.svg";
 
@@ -55,7 +59,7 @@ class App extends Component {
       bg: ""
     };
   }
-  
+
   changeBg = page => {
     console.log("current state page is:" + this.state.bg);
     switch (page) {
@@ -111,7 +115,10 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div className="App d-flex flex-column animated fadeIn" style={this.appDivStyle}>
+          <div
+            className="App d-flex flex-column animated fadeIn"
+            style={this.appDivStyle}
+          >
             <Navbar changeBg={this.changeBg} />
             <Route exact path="/" component={Landing} />
             <div className="main container-fluid">
@@ -119,7 +126,17 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <Route exact path="/learn" component={Learn} />
               <Route path="/bees" component={Bees} />
-              <Route exact path="/thankyou" component={ThankYou}/>
+              <Route exact path="/thankyou" component={ThankYou} />
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+              <Switch>
+                <AdminRoute
+                  exact
+                  path="/admin-dashboard"
+                  component={AdminDashboard}
+                />
+              </Switch>
             </div>
             <Footer />
           </div>

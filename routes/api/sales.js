@@ -13,33 +13,31 @@ router.get("/this", (req, res) => {
   });
 });
 
-router.post(
-  "/order",
-  (req, res) => {
-    const { errors, isValid } = validateOrderInput(req.body);
-    if (!isValid) {
-      console.log('error');
-      return res.status(400).json(errors);
-    }
-    let currentOrder = new Order({
-      date: Date.now(),
-      type: req.body.type,
-      quantity: req.body.quantity,
-      email: req.body.email,
-      name:req.body.name,
-      phone: req.body.phone,
-      marked:req.body.marked,
-      pending: true
-    });
-    currentOrder.save()
-          .then(order => {
-            res.status(200).json(order);
-          })
-          .catch(err => {
-            res.status(400).json(err);
-          }); 
+router.post("/order", (req, res) => {
+  const { errors, isValid } = validateOrderInput(req.body);
+  if (!isValid) {
+    console.log("error");
+    return res.status(400).json(errors);
   }
-);
+  let currentOrder = new Order({
+    date: Date.now(),
+    type: req.body.type,
+    quantity: req.body.quantity,
+    email: req.body.email,
+    name: req.body.name,
+    phone: req.body.phone,
+    marked: req.body.marked,
+    pending: true
+  });
+  currentOrder
+    .save()
+    .then(order => {
+      res.status(200).json(order);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
 
 router.delete(
   "/delete",
@@ -70,9 +68,11 @@ router.get(
       Order.find({ pending: true })
         .then(orders => {
           console.log("got orders");
+          res.json(orders);
         })
         .catch(err => {
           console.log("error getting orders");
+          res.status(400).json({ error: "error getting orders" });
         });
     }
   }

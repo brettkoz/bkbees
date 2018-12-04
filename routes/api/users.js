@@ -26,15 +26,21 @@ router.post("/register", (req, res) => {
       return res.status(400).json(errors);
       console.log("Email Already Exists Error Registering User");
     } else {
-      const isAdmin =
-        req.body.email == "kozbrett@gmail.com" || "kreplogle88@icloud.com"
-          ? true
-          : false;
+      let isKozma = false;
+      if (req.body.email == "kozbrett@gmail.com") {
+        isKozma = true;
+      } else if (req.body.email == "kreplogle88@icloud.com") {
+        isKozma = true;
+      } else {
+        isKozma = false;
+      }
+      console.log("isKozma? " + isKozma);
+      console.log("Email: " + req.body.email);
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
-        admin: isAdmin
+        admin: isKozma
       });
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
