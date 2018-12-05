@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { YoutubeCredentials } from "./credentials";
-import axios from "axios";
+import YouTube from 'react-youtube';
+import Spinner from "./../common/Spinner";
 
 export default class Videos extends Component {
   state = { videos: [], loading: true };
@@ -22,19 +23,42 @@ export default class Videos extends Component {
       channelID +
       "&part=snippet,id&order=date&maxResults=" +
       maxResults;
+console.log(url);
 
-    axios
-      .get(url)
-      .then(res => {
-        this.setState({ videos: res.items, loading: false });
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log("Error: " + err);
-      });
+fetch(url)
+.then(function(response) {
+  if (response.status >= 400) {
+    throw new Error("Bad response from server");
+  }
+  return response.json();
+})
+.then(function(data) {
+  that.setState({ videos: data.items, loading: false });
+  console.log(data.items);
+})
+.catch(error => {
+  console.error(error);
+});
   }
 
   render() {
-    return <div>Youtube Like a maddafukka {this.state.videos} </div>;
+    let {videos, loading} = this.state;
+    if (loading){
+      return <Spinner/>;
+    }
+
+    return <div>Youtube Like a maddafukka 
+      <YouTube
+          videoId={videos[1].id.videoId}
+          opts={{
+            height: "390",
+            width: "640",
+            playerVars: {
+              autoplay: 1
+            }
+          }}
+          onReady={this._onReady}
+        />
+    </div>;
   }
 }
