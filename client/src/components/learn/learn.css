@@ -1,0 +1,21 @@
+.learnCategory {
+  position: relative;
+  display: inline-block;
+  color: #000;
+}
+.learnCategoryPic {
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 800px) {
+  .learnCategory {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 801px) {
+}
+@media only screen and (min-width: 1200px) {
+}
+@media only screen and (min-width: 1600px) {
+}

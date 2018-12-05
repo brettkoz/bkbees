@@ -7,6 +7,7 @@ import "./components/Navbar.css";
 import "./components/common/OrderForm.css";
 import "./components/auth/auth.css";
 import "./animate.css";
+import "./components/learn/learn.css";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -15,7 +16,7 @@ import Navbar from "./components/navbar";
 import Landing from "./components/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-import Learn from "./components/Learn";
+import Learn from "./components/learn/Learn";
 import Footer from "./components/Footer";
 import Bees from "./components/bees/Bees";
 import ThankYou from "./components/common/ThankYou";
@@ -120,11 +121,15 @@ class App extends Component {
             style={this.appDivStyle}
           >
             <Navbar changeBg={this.changeBg} />
-            <Route exact path="/" component={Landing} />
+            <Route
+              exact
+              path="/"
+              render={props => <Landing {...props} changeBg={this.changeBg} />}
+            />
             <div className="main container-fluid">
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
-              <Route exact path="/learn" component={Learn} />
+              <Route path="/learn" component={Learn} />
               <Route path="/bees" component={Bees} />
               <Route exact path="/thankyou" component={ThankYou} />
               <Switch>

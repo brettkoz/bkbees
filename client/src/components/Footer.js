@@ -13,9 +13,8 @@ function Footer(props) {
         </a>
         <p>
           Copyright &copy; 2019 B&K Bees
-          <br />
           <span className="credit">
-            This Site Was Designed By{" "}
+            This Site Was Engineered By:&nbsp;
             <a href="http://www.bkbeesites.com" target="_blank">
               www.bkbeesites.com
             </a>
