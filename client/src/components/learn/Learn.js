@@ -21,7 +21,7 @@ export default class Learn extends Component {
   };
   render() {
     return (
-      <div className="container-fluid text-center animated bounceIn beesContainer">
+      <div className="text-center animated bounceIn beesContainer">
         <Route exact path="/learn" component={Main} />
         <Route exact path="/learn/videos" component={Videos} />
         <Route exact path="/learn/articles" component={Articles} />
