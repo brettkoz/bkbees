@@ -12,7 +12,7 @@ class Queens extends Component {
                 <div className="row row-space text-center">
                     
                     <div className="col-md-6 col-xs-12">
-                    <img className="displayProduct" src={pic}/>
+                    <img className="displayProduct" src={pic} alt="Queens"/>
                         <h1 className="display-4">Our queens...</h1>
                         <p className="lead">this and that and this and that and this and that and this and that</p>
                     </div>

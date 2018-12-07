@@ -17,6 +17,9 @@ export default class Learn extends Component {
         break;
       case "calendar":
         this.props.history.push("/learn/calendar");
+        break;
+      default:
+        break;
     }
   };
   render() {

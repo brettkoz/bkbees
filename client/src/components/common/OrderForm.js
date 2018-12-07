@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { placeOrder } from "../../actions/orderActions";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import {FormErrors} from '../common/FormErrors';
+import { FormErrors } from "../common/FormErrors";
 
 class OrderForm extends Component {
   constructor() {
@@ -12,32 +12,32 @@ class OrderForm extends Component {
     this.state = {
       name: "",
       email: "",
-      phone:'',
+      phone: "",
       password: "",
       password2: "",
-      quantity:'',
-      formErrors:{email:'',phone:'',quantity:'',name:''},
-      marked:false,
-      emailValid:false,
-      emailChanged:false,
-      quantityValid:false,
-      quantityChanged:false,
-      nameValid:false,
-      nameChanged:false,
-      phoneValid:false,
-      phoneChanged:false,
+      quantity: "",
+      formErrors: { email: "", phone: "", quantity: "", name: "" },
+      marked: false,
+      emailValid: false,
+      emailChanged: false,
+      quantityValid: false,
+      quantityChanged: false,
+      nameValid: false,
+      nameChanged: false,
+      phoneValid: false,
+      phoneChanged: false,
       errors: {}
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
-    if (nextProps.order){
-      this.props.history.push('/thankyou');
+    if (nextProps.order) {
+      this.props.history.push("/thankyou");
     }
   }
 
@@ -47,75 +47,92 @@ class OrderForm extends Component {
     let nameValid = this.state.nameValid;
     let phoneValid = this.state.phoneValid;
     let quantityValid = this.state.quantityValid;
-  
-    switch(fieldName) {
-      case 'email':
-        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-        fieldValidationErrors.email = emailValid ? '' : ' is invalid';
-        break;
-      case 'name':
-        nameValid = value.length >= 4;
-        fieldValidationErrors.name = nameValid ? '': ' is too short';
-        break;
-        case'quantity':
-        quantityValid = value > 0;
-        fieldValidationErrors.quantity = quantityValid ? '': ' must be more than 0';
-        break;
-        case'phone':
 
-        phoneValid = value.length >= 10
-        fieldValidationErrors.phone = phoneValid ? '': ' number must be 10 digits';
+    switch (fieldName) {
+      case "email":
+        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+        fieldValidationErrors.email = emailValid ? "" : " is invalid";
+        break;
+      case "name":
+        nameValid = value.length >= 4;
+        fieldValidationErrors.name = nameValid ? "" : " is too short";
+        break;
+      case "quantity":
+        quantityValid = value > 0;
+        fieldValidationErrors.quantity = quantityValid
+          ? ""
+          : " must be more than 0";
+        break;
+      case "phone":
+        phoneValid = value.length >= 10;
+        fieldValidationErrors.phone = phoneValid
+          ? ""
+          : " number must be 10 digits";
         break;
       default:
         break;
     }
-    this.setState({formErrors: fieldValidationErrors,
-                    emailValid: emailValid,
-                    nameValid: nameValid,
-                    phoneValid: phoneValid,
-                    quantityValid: quantityValid
-                  }, this.validateForm);
+    this.setState(
+      {
+        formErrors: fieldValidationErrors,
+        emailValid: emailValid,
+        nameValid: nameValid,
+        phoneValid: phoneValid,
+        quantityValid: quantityValid
+      },
+      this.validateForm
+    );
   }
-  
+
   validateForm() {
-    this.setState({formValid: this.state.emailValid && this.state.nameValid && this.state.phoneValid && this.state.quantityValid});
+    this.setState({
+      formValid:
+        this.state.emailValid &&
+        this.state.nameValid &&
+        this.state.phoneValid &&
+        this.state.quantityValid
+    });
   }
   onChange(e) {
     // e.preventDefault();
     let radioClick = false;
-    this.setState({formErrors:{email:'',phone:'',quantity:'',name:''}})
-    
+    this.setState({
+      formErrors: { email: "", phone: "", quantity: "", name: "" }
+    });
+
     let name = e.target.name;
     let value = e.target.value;
     switch (name) {
-      case 'name':
-        this.setState({nameChanged:true})
-      break;
-      case 'phone':
-      this.setState({phoneChanged:true})
-      break;
-      case'quantity':
-      this.setState({quantityChanged:true})
-      break;
-      case 'email':
-      this.setState({emailChanged:true})
-      break;
-      case 'marked':
-      this.setState({marked:true});
-      radioClick = true;
-      console.log('clicked marked');
-      break;
-      case 'unmarked':
-      this.setState({marked:false});
-      radioClick=true;
-      console.log('clicked unmarked');
-      break;
+      case "name":
+        this.setState({ nameChanged: true });
+        break;
+      case "phone":
+        this.setState({ phoneChanged: true });
+        break;
+      case "quantity":
+        this.setState({ quantityChanged: true });
+        break;
+      case "email":
+        this.setState({ emailChanged: true });
+        break;
+      case "marked":
+        this.setState({ marked: true });
+        radioClick = true;
+
+        break;
+      case "unmarked":
+        this.setState({ marked: false });
+        radioClick = true;
+
+        break;
+      default:
+        break;
     }
-    if (!radioClick){
-      this.setState({ [name]: value },() => {this.validateField(name,value)});
+    if (!radioClick) {
+      this.setState({ [name]: value }, () => {
+        this.validateField(name, value);
+      });
     }
-    
-    
   }
   onSubmit(e) {
     e.preventDefault();
@@ -129,25 +146,24 @@ class OrderForm extends Component {
       quantity: quantity,
       email: email,
       phone: phone,
-      marked:marked,
-      name:name
-    }
+      marked: marked,
+      name: name
+    };
     this.props.placeOrder(order);
   }
   render() {
     const errors = this.state.errors;
-    console.log(errors);
+
     let showMarkOptions = false;
-    if (this.props.orderType == 'queens'){
+    if (this.props.orderType === "queens") {
       showMarkOptions = true;
     }
-    let totalErrors = {...errors,...this.state.formErrors};
-    console.log(totalErrors);
+    let totalErrors = { ...errors, ...this.state.formErrors };
+
     return (
       <div className="order-container">
         <h3>Order {this.props.orderType}</h3>
         <div className="panel panel-default">
-        
           <FormErrors formErrors={totalErrors} />
         </div>
         <form noValidate onSubmit={this.onSubmit}>
@@ -158,7 +174,8 @@ class OrderForm extends Component {
                 className={classnames(
                   "form-control form-control-lg orderInput",
                   {
-                    "is-invalid": !this.state.nameValid && this.state.nameChanged
+                    "is-invalid":
+                      !this.state.nameValid && this.state.nameChanged
                   }
                 )}
                 placeholder="Name"
@@ -176,7 +193,9 @@ class OrderForm extends Component {
                 className={classnames(
                   "form-control form-control-lg authInput",
                   {
-                    "is-invalid": !this.state.emailValid && this.state.emailChanged || errors.email
+                    "is-invalid":
+                      (!this.state.emailValid && this.state.emailChanged) ||
+                      errors.email
                   }
                 )}
                 placeholder="Email"
@@ -194,7 +213,8 @@ class OrderForm extends Component {
                 className={classnames(
                   "form-control form-control-lg authInput",
                   {
-                    "is-invalid": !this.state.phoneValid && this.state.phoneChanged
+                    "is-invalid":
+                      !this.state.phoneValid && this.state.phoneChanged
                   }
                 )}
                 placeholder="Phone"
@@ -212,7 +232,10 @@ class OrderForm extends Component {
                 className={classnames(
                   "form-control form-control-lg authInput",
                   {
-                    "is-invalid": !this.state.quantityValid && this.state.quantityChanged || errors.quantity
+                    "is-invalid":
+                      (!this.state.quantityValid &&
+                        this.state.quantityChanged) ||
+                      errors.quantity
                   }
                 )}
                 placeholder="Quantity"
@@ -222,13 +245,17 @@ class OrderForm extends Component {
                 required
               />
             </div>
-            <div className={showMarkOptions?"form-check form-check-inline":"hidden"}>
+            <div
+              className={
+                showMarkOptions ? "form-check form-check-inline" : "hidden"
+              }
+            >
               <input
                 className="form-check-input"
                 type="radio"
                 name="unmarked"
                 id="unmarked"
-                checked={this.state.marked == false}
+                checked={this.state.marked === false}
                 onChange={this.onChange}
                 value="unmarked"
               />
@@ -236,15 +263,19 @@ class OrderForm extends Component {
                 Un-Marked
               </label>
             </div>
-            <div className={showMarkOptions?"form-check form-check-inline":"hidden"}>
+            <div
+              className={
+                showMarkOptions ? "form-check form-check-inline" : "hidden"
+              }
+            >
               <input
                 className="form-check-input"
                 type="radio"
                 name="marked"
                 id="marked"
-                checked={this.state.marked == true}
+                checked={this.state.marked === true}
                 onChange={this.onChange}
-                value='marked'
+                value="marked"
               />
               <label className="form-check-label" htmlFor="marked">
                 Marked (add $5)

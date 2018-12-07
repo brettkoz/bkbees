@@ -23,12 +23,12 @@ class Login extends Component {
   componentDidMount() {
     if (
       this.props.auth.isAuthenticated &&
-      this.props.auth.user.admin == false
+      this.props.auth.user.admin === false
     ) {
       this.props.history.push("/dashboard");
     } else if (
       this.props.auth.isAuthenticated &&
-      this.props.auth.user.admin == true
+      this.props.auth.user.admin === true
     ) {
       this.props.history.push("admin-dashboard");
     }

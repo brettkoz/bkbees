@@ -8,7 +8,6 @@ class Landing extends Component {
     };
   }
   render() {
-    const btnClass = this.state.isHovered ? "bounce error animated" : "";
     return (
       <div className="contentContainer">
         <div className="buttons">

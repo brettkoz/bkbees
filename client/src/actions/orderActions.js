@@ -1,7 +1,5 @@
 import axios from "axios";
 import {
-  GET_ORDER,
-  PLACE_ORDER,
   GET_ORDERS,
   SET_CURRENT_ORDER,
   GET_ERRORS,

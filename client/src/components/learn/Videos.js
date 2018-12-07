@@ -2,12 +2,18 @@ import React, { Component } from "react";
 import { YoutubeCredentials } from "./credentials";
 import YouTube from "react-youtube";
 import Spinner from "./../common/Spinner";
-import { frontEndOrigin } from "./../../utils/origin";
 
 export default class Videos extends Component {
   constructor(props) {
     super(props);
-    this.state = { videos: [], loading: true, nextPageToken: '',pageTokens:[],page:0,activeVideo:'' };
+    this.state = {
+      videos: [],
+      loading: true,
+      nextPageToken: "",
+      pageTokens: [],
+      page: 0,
+      activeVideo: ""
+    };
     this.handleThumbClick = this.handleThumbClick.bind(this);
     this.getLatestVideos = this.getLatestVideos.bind(this);
     this.getMoreVideos = this.getMoreVideos.bind(this);
@@ -16,25 +22,25 @@ export default class Videos extends Component {
   handleThumbClick(video) {
     console.log("clicked thumb");
     console.log(video);
-    this.setState({activeVideo:video.id.videoId});
+    this.setState({ activeVideo: video.id.videoId });
   }
-  getPreviousVideos(){
+  getPreviousVideos() {
     let tokens = [...this.state.pageTokens];
     let page = this.state.page;
-    let prevToken = tokens[page -2];
-    tokens.splice(page -1);
+    let prevToken = tokens[page - 2];
+    tokens.splice(page - 1);
     console.log(prevToken);
-    if (this.state.page <= 2){
+    if (this.state.page <= 2) {
       this.getLatestVideos();
       return;
     }
-    page = page -1;
-    this.setState({loading:true});
-    let that=this;
+    page = page - 1;
+    this.setState({ loading: true });
+    let that = this;
     var API_key = YoutubeCredentials;
     let PAGE_TOKEN = prevToken;
-    console.log('PREVTOKEN ' + PAGE_TOKEN);
-    if (PAGE_TOKEN == ''){
+    console.log("PREVTOKEN " + PAGE_TOKEN);
+    if (PAGE_TOKEN === "") {
       this.getLatestVideos();
       return;
     }
@@ -43,7 +49,7 @@ export default class Videos extends Component {
     var url =
       "https://www.googleapis.com/youtube/v3/search?key=" +
       API_key +
-      '&pageToken='+
+      "&pageToken=" +
       PAGE_TOKEN +
       "&channelId=" +
       channelID +
@@ -58,33 +64,43 @@ export default class Videos extends Component {
       })
       .then(function(data) {
         console.log(data);
-        that.setState({ videos: data.items, loading: false, nextPageToken:data.nextPageToken,pageTokens:tokens,page:page });
+        that.setState({
+          videos: data.items,
+          loading: false,
+          nextPageToken: data.nextPageToken,
+          pageTokens: tokens,
+          page: page
+        });
       })
       .catch(error => {
         console.error(error);
       });
   }
-  getMoreVideos(){
+  getMoreVideos() {
     const currentToken = this.state.nextPageToken;
     let tokens = [...this.state.pageTokens];
     tokens.push(currentToken);
     console.log(tokens);
     let prevToken;
-    if (this.state.currentPageToken == 'latest'){
-      prevToken = 'latest';
+    if (this.state.currentPageToken === "latest") {
+      prevToken = "latest";
     } else {
-      prevToken = ''
+      prevToken = "";
     }
-    let page = this.state.page +1;
-    if (page <=2){
-      prevToken = '';
-      
+    let page = this.state.page + 1;
+    if (page <= 2) {
+      prevToken = "";
     } else {
       prevToken = currentToken;
     }
-    console.log('GET MORE VIDEOS, PREVTOKEN:'+prevToken+' Current Token ' + currentToken);
-    this.setState({loading:true});
-    let that=this;
+    console.log(
+      "GET MORE VIDEOS, PREVTOKEN:" +
+        prevToken +
+        " Current Token " +
+        currentToken
+    );
+    this.setState({ loading: true });
+    let that = this;
     var API_key = YoutubeCredentials;
     let PAGE_TOKEN = this.state.nextPageToken;
     var channelID = "UCnOlgsOidQKN_3lkpmJ7UDA";
@@ -92,7 +108,7 @@ export default class Videos extends Component {
     var url =
       "https://www.googleapis.com/youtube/v3/search?key=" +
       API_key +
-      '&pageToken='+
+      "&pageToken=" +
       PAGE_TOKEN +
       "&channelId=" +
       channelID +
@@ -108,15 +124,21 @@ export default class Videos extends Component {
       })
       .then(function(data) {
         console.log(data);
-        that.setState({ videos: data.items, loading: false, nextPageToken:data.nextPageToken,pageTokens:tokens,page:page });
+        that.setState({
+          videos: data.items,
+          loading: false,
+          nextPageToken: data.nextPageToken,
+          pageTokens: tokens,
+          page: page
+        });
       })
       .catch(error => {
         console.error(error);
       });
   }
-  getLatestVideos(){
+  getLatestVideos() {
     let tokens = [...this.state.pageTokens];
-    tokens.push('');
+    tokens.push("");
     console.log(tokens);
     let that = this;
     var API_key = YoutubeCredentials;
@@ -129,7 +151,7 @@ export default class Videos extends Component {
       channelID +
       "&part=snippet,id&order=date&maxResults=" +
       maxResults;
-      console.log(url);
+    console.log(url);
     fetch(url)
       .then(function(response) {
         if (response.status >= 400) {
@@ -138,14 +160,23 @@ export default class Videos extends Component {
         return response.json();
       })
       .then(function(data) {
-        that.setState({ videos: data.items, loading: false,activeVideo:data.items[0].id.videoId,nextPageToken:data.nextPageToken,currentPageToken:'latest',previousPageToken:null,pageTokens:tokens,page:1 });
+        that.setState({
+          videos: data.items,
+          loading: false,
+          activeVideo: data.items[0].id.videoId,
+          nextPageToken: data.nextPageToken,
+          currentPageToken: "latest",
+          previousPageToken: null,
+          pageTokens: tokens,
+          page: 1
+        });
       })
       .catch(error => {
         console.error(error);
       });
   }
   componentDidMount() {
-   this.getLatestVideos();
+    this.getLatestVideos();
   }
   // video.thumbnails.default.url
   render() {
@@ -169,6 +200,7 @@ export default class Videos extends Component {
           key={i}
           className="thumbImg"
           src={video.snippet.thumbnails.medium.url}
+          alt={video.snippet.title}
         />
         <span className="subTitle">{video.snippet.title}</span>
       </p>
@@ -197,6 +229,7 @@ export default class Videos extends Component {
             className="btn subscribeButton"
             href="https://www.youtube.com/channel/UCnOlgsOidQKN_3lkpmJ7UDA?sub_confirmation=1"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <span className="fab fa-youtube" /> Subscribe To B&amp;K Bees On
             Youtube
@@ -204,8 +237,12 @@ export default class Videos extends Component {
         </div>
         <p className="subTitle">Latest Videos On B&amp;K Bees</p>
         <div className="thumbs">{thumbContent}</div>
-        <a className="btn btn-primary" onClick={this.getPreviousVideos}>Back</a>
-        <a className="btn btn-primary" onClick={this.getMoreVideos}>More</a>
+        <button className="btn btn-primary" onClick={this.getPreviousVideos}>
+          Back
+        </button>
+        <button className="btn btn-primary" onClick={this.getMoreVideos}>
+          More
+        </button>
       </div>
     );
   }

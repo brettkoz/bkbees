@@ -12,7 +12,7 @@ class Packages extends Component {
                 <div className="row row-space text-center">
                     
                     <div className="col-md-6 col-xs-12">
-                    <img className="displayProduct" src={pic}/>
+                    <img className="displayProduct" src={pic} alt="Package Bees"/>
                         <h1 className="display-4">Our packages...</h1>
                         <p className="lead">this and that and this and that and this and that and this and that</p>
                     </div>
