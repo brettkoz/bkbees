@@ -1,10 +1,31 @@
 import React from "react";
+import classnames from 'classnames';
 
-export default function OrderTable() {
+export default function OrderTable(props) {
+  console.log('props from ordertable: ' + JSON.stringify(props));
+  let activeOrderId;
+  if (props.activeOrder == null){
+    activeOrderId = '';
+  } else {
+activeOrderId = props.activeOrder._id;
+  } 
+
+  const tableRows = props.orders.map(singleOrder => (
+    <tr className={classnames( {
+      activeOrder: activeOrderId === singleOrder._id
+    })} key={singleOrder._id} onClick={()=>props.setActive(singleOrder)}>
+            <th scope="row">{singleOrder.date}</th>
+            <td>{singleOrder.name}</td>
+            <td>{singleOrder.phone}</td>
+            <td>{singleOrder.email}</td>
+            <td>{singleOrder.quantity}</td>
+            <td>{singleOrder.notes}</td>
+          </tr>
+  ));
   return (
-    <div>
-      <table className="table">
-        <thead>
+    <div className="table-responsive">
+      <table className="table orderTable">
+        <thead className="thead-dark">
           <tr>
             <th scope="col">Order Date</th>
             <th scope="col">Name</th>
@@ -15,24 +36,7 @@ export default function OrderTable() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {tableRows}
         </tbody>
       </table>
     </div>

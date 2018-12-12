@@ -31,3 +31,16 @@
 .activeOrderLink {
   color: #000;
 }
+.orderTable {
+  width:100%;
+  overflow:scroll;
+}
+.activeOrder{
+  border:2px solid black;
+}
+.activeOrderList {
+  list-style-type: none;
+}
+.modifyOrderForm{
+  width:60%;
+}
