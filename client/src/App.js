@@ -106,7 +106,7 @@ class App extends Component {
         break;
       default:
         this.appDivStyle = {
-          backgroundImage: "url(" + LandingBG + ")",
+          backgroundImage: "url(" + PagesBg + ")",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",

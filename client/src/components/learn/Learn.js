@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import Articles from "./Articles";
 import Calendar from "./calendar/Calendar";
 import Videos from "./Videos";
@@ -7,6 +6,10 @@ import Main from "./Main";
 import { Route } from "react-router-dom";
 
 export default class Learn extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   onClickCategory = which => {
     switch (which) {
       case "articles":

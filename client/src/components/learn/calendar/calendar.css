@@ -1,0 +1,34 @@
+.calendarContainer {
+  margin-top: 4em;
+}
+.calendarContainer .lead {
+  color: black;
+  text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff,
+    -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+.calendarRow {
+  margin-top: 2em;
+  display: table;
+}
+.previous,
+.next {
+  display: table-cell;
+  vertical-align: middle;
+  width: 50px;
+  cursor: pointer;
+}
+.calendarContent {
+  padding: auto;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+@media only screen and (max-width: 400px) {
+  .previous,
+  .next {
+    display: table-cell;
+    vertical-align: middle;
+    width: 500px !important;
+    cursor: pointer;
+  }
+}

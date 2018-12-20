@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
-import Spinner from "./../common/Spinner";
 import Orders from "./Orders";
 import Content from "./Content";
 import Users from "./Users";
@@ -19,7 +18,7 @@ class AdminDashboard extends Component {
 
   onNavClick(com) {
     let prevComponent = this.state.activeComponent;
-    if (prevComponent == com) {
+    if (prevComponent === com) {
       return;
     }
     console.log(com);

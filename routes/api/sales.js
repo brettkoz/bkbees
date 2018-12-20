@@ -70,7 +70,7 @@ router.post("/products", (req, res) => {
   productInfo.then(
     response => {
       res.send(response);
-      console.log(res);
+      console.log("res from post Products:" + res);
     },
     err => {
       console.log(err);

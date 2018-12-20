@@ -3,9 +3,6 @@ import queryString from "query-string";
 import axios from "axios";
 
 export default class Success extends Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     const values = queryString.parse(this.props.location.search);
     let paymentId = values.paymentId;

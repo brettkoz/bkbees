@@ -6,6 +6,7 @@ class Landing extends Component {
     this.state = {
       isHovered: false
     };
+    this.props.changeBg("landing");
   }
   render() {
     return (
