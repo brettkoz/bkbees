@@ -24,6 +24,7 @@ import PrivateRoute from "./components/common/PrivateRoute";
 import AdminRoute from "./components/common/AdminRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import AdminDashboard from "./components/dashboard/AdminDashboard";
+import Success from "./components/Success";
 import { setCurrentUser, logoutUser } from "./actions/authAction";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -132,6 +133,7 @@ class App extends Component {
               <Route path="/learn" component={Learn} />
               <Route path="/bees" component={Bees} />
               <Route exact path="/thankyou" component={ThankYou} />
+              <Route path="/success" component={Success} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>

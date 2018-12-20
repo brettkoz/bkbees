@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Articles from "./Articles";
-import Calendar from "./Calendar";
+import Calendar from "./calendar/Calendar";
 import Videos from "./Videos";
 import Main from "./Main";
 import { Route } from "react-router-dom";

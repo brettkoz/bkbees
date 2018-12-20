@@ -22,10 +22,12 @@
     "nodemailer": "^4.7.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "paypal-rest-sdk": "^1.8.1",
     "react-redux": "^5.1.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "validator": "^10.8.0"
+    "validator": "^10.8.0",
+    "woocommerce-api": "^1.4.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.6"
