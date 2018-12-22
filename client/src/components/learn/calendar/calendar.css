@@ -22,13 +22,47 @@
   display: table-cell;
   vertical-align: middle;
 }
+.productContainer {
+  margin: 2em auto;
+}
+.mainProductPic {
+  width: 80%;
+  margin: 0 10%;
+}
 
 @media only screen and (max-width: 400px) {
   .previous,
   .next {
     display: table-cell;
     vertical-align: middle;
-    width: 500px !important;
+    width: 5px !important;
     cursor: pointer;
+    display: none;
+  }
+  .previouS,
+  .nexT {
+    display: inline-block;
+    margin: 5px;
+    color: black;
+    text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff,
+      -1px 1px 0 #fff, 1px 1px 0 #fff;
+  }
+  .calendarContainer {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .productContainer {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 801px) {
+  .previouS,
+  .nexT {
+    display: none;
+  }
+  .productContainer {
+    width: 400px;
+    position: relative;
+    margin: 2em auto;
   }
 }

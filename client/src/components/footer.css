@@ -6,12 +6,9 @@ html {
 .footer {
   position: relative;
   bottom: 0;
-  padding-bottom: 7em;
   width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 100px;
+  height: 100%;
   border-top: 1px solid #ccc;
-  /* background: #fff; */
 }
 footer p,
 a,

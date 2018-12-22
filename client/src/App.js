@@ -24,6 +24,7 @@ import PrivateRoute from "./components/common/PrivateRoute";
 import AdminRoute from "./components/common/AdminRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import AdminDashboard from "./components/dashboard/AdminDashboard";
+import Checkout from "./components/store/Checkout";
 import Success from "./components/Success";
 import { setCurrentUser, logoutUser } from "./actions/authAction";
 import jwt_decode from "jwt-decode";

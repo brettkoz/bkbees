@@ -6,3 +6,4 @@ export const ORDERS_LOADING = "ORDERS_LOADING";
 export const GET_ORDERS = "GET_ORDERS";
 export const DELETE_ORDER = "DELETE_ORDER";
 export const CHANGE_ORDER = "CHANGE_ORDER";
+export const SET_CURRENT_SALE = "SET_CURRENT_SALE";

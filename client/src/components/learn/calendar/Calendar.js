@@ -1,29 +1,18 @@
 import React, { Component } from "react";
-import axios from "axios";
-import Product from "./../../Product";
-import config from "./../../../config/config";
+import Product from "./../../store/Product";
 import calendarInfo from "./calendarInfo";
 import "./calendar.css";
 
 export default class Calendar extends Component {
   constructor(props) {
     super(props);
-    this.buyCalendar = this.buyCalendar.bind(this);
     this.clickedCalendarNav = this.clickedCalendarNav.bind(this);
     this.state = {
       activeMonth: ""
     };
   }
+
   componentDidMount() {
-    let productId = { productId: "688" };
-    axios
-      .post(config.BACKEND_URL + "/api/sales/products", productId)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
     let nowDate = new Date(Date.now());
     let nowMonth = nowDate.getMonth();
     this.setState({ activeMonth: nowMonth });
@@ -57,19 +46,7 @@ export default class Calendar extends Component {
         break;
     }
   }
-  buyCalendar() {
-    console.log("clicked buyCalendar");
-    let reqBody = { productId: "688", quantity: 1 };
-    axios
-      .post("http://localhost:5000/api/sales/purchase", reqBody)
-      .then(res => {
-        console.log(res);
-        window.location = res.data.url;
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+
   render() {
     let display;
     console.log("active month is: " + this.state.activeMonth);
@@ -153,10 +130,25 @@ export default class Calendar extends Component {
             Next
           </div>
         </div>
+        <div
+          className="previouS"
+          onClick={() => {
+            this.clickedCalendarNav("previous");
+          }}
+        >
+          <i className="fas fa-chevron-left" />
+          Previous
+        </div>
+        <div
+          className="nexT"
+          onClick={() => {
+            this.clickedCalendarNav("next");
+          }}
+        >
+          <i className="fas fa-chevron-right" />
+          Next
+        </div>
         <Product productId="688" />
-        <button className="btn btn-large" onClick={() => this.buyCalendar()}>
-          Buy Calendar
-        </button>
       </div>
     );
   }
